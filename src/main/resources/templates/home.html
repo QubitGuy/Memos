@@ -2,10 +2,48 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Forsíða</title>
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>Memos</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h1>Forsíðan</h1>
-<p>Seinast vistað: <span th:text="${currentTime}" /></p>
+<header>
+    <h1>Forsíðan</h1>
+    <!-- <img class="logo" src=""> -->
+    <nav>
+        <ul class="nav_links">
+            <li><a href="#">Search</a></li>
+            <!-- <li><a href="#">Select</a></li> -->
+            <li><a href="/newMemo">New memo</a></li>
+        </ul>
+    </nav>
+    <a class="cta" href="#"><button>Contact</button></a>
+</header>
+<main>
+    <div th:switch="${memos}">
+        <h2  th:case="null">No memos yet!</h2>
+        <div th:case="*">
+            <h2 class="h2_userRecipe">Memos</h2>
+            <table >
+
+                <thead>
+                <tr>
+                    <th>Title</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="memo : ${memos}"> <!-- th=thymeleaf -> th:each == for each loop
+                                                            where recipe exists in a repo of recipes -->
+                    <td class="td" th:text="${memo.memoTitle}"></td>
+                    <td><a th:href="@{/viewMemo/{id}(id=${memo.ID})}">View</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+</main>
+
 </body>
 </html>

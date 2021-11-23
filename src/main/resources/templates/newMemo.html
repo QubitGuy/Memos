@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>Memos</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<main>
+    <div>
+        <form action="#" th:action="@{/newMemo}" th:object="${memo}" method="post">
+            <h1 class="heading">Minnis listi</h1>
+            <ul class="items">
+                <form class="form">
+                    <input class="form__input" type="text">
+                    <button class="form__button">Bæta við</button>
+                </form>
+            </ul>
+        </form>
+    </div>
+</main>
+</body>
+</html>
